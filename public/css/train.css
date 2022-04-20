@@ -1,0 +1,99 @@
+body {
+    font-family: 'Open Sans', sans-serif;}
+
+.container {
+    width: 60%;
+    margin: auto;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+    text-align: center;
+    background-color: rgba(150, 208, 226, 0.688);
+    border-left: solid 10px grey;
+    padding: 1em 0 1em 0;
+}
+
+#training-stats {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.word {
+    padding: 2em 0 3em 0;
+}
+
+#vocab {
+    width: 20%;
+    font-size: 2em;
+    font-weight: bold;
+    padding: .5em;
+    border: solid 3px rgba(180, 174, 174, 0.462);
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+
+#start-btn {
+    font-size: 2.5em;
+    padding: 1.5rem 3rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+}
+
+button:hover {
+    background:rgb(163, 159, 159)
+}
+
+#answer-line {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#answer-input,
+#answer-btn {
+    border: none;
+    height: 2em;
+    padding: 0;
+    margin: 0;
+}
+
+#answer-input {
+    border-radius: 5px 0 0 5px;
+}
+
+#answer-btn {
+    border-radius: 0 5px 5px 0;
+    padding: 0 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#stack {
+    font-size: 1rem;
+    text-align: left;
+}
+
+#bottom-line {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1em auto;
+    width: 80%;
+
+}
+
+#stack-btn,
+#restart-btn {
+    height: 3em;
+    width: 6em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
