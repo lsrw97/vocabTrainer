@@ -68,3 +68,12 @@ button:hover {
 textarea:focus, input:focus{
     outline: none;
 }
+
+select {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1em;
+    border-radius: 5px;
+    margin: 0 1em;
+}

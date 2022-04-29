@@ -1,4 +1,3 @@
-
 <html>
     <body>
         <head>
@@ -7,23 +6,30 @@
             <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">        </head>
         <body>
             <div class="container">
-                <h1>Insert vocabulary for the training!</h1>
-                <form action="#"  id="words-collector">
-                    <input type="text" id="word" name="word" placeholder="word" required>
-                    <input type="text" id="translation" name="translation" placeholder="translation" required>
-                    <button type="submit">Submit</button>
-                </form>
-                <main id="voc-list">
-                    <div class="voc-item-title">
-                        <span>Word</span>
-                        <span>Translation</span>
-                    </div>
+                <h1>Select your Languages!</h1>
+                <main>
+                    <select name="languages" id="lang-one">
+                        <option value="english">English</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                        <option value="russian">Russian</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="portugues">Portugues</option>
+                    </select>
+                    <select name="languages" id="lang-two">
+                        <option value="english">English</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                        <option value="russian">Russian</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="portugues">Portugues</option>
+                    </select>
                 </main>
                 <div id="bottom-line">
-                    <a href="train.html"><button>ready for your training?</button></a>
+                    <a href="stack.html" id="stack"><button>Go to Stack</button></a>
                 </div>
             </div>
-            <script src="js/script.js">
+            <script src="js/index.js">
             </script>
         </body>
     </body>

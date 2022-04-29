@@ -15,7 +15,20 @@ fetch('/api')
         index = listLen
     })
 
-
+    function rightAnswer(answer, translationdb) {
+        let right = 0
+        const trans = translationdb.split(', ')
+        console.log(trans)
+        console.log(answer + ' ' + translationdb)
+    
+        trans.forEach(transl => {
+            let c = transl.localeCompare(answer)
+            if(c === 0)
+            right = 1
+        })
+        return right
+    }
+    
 document.getElementById('start-btn').addEventListener('click', () => {
     document.querySelector('.container').innerHTML = 
     `
@@ -29,8 +42,10 @@ document.getElementById('start-btn').addEventListener('click', () => {
         </div>
         <div id="bottom-line">
             <p id="stack">Stack: ${database.length}</p>
-            <a href="index.html"><button id="stack-btn">Stack</button></a>
+            <a href="stack.html"><button id="stack-btn">Stack</button></a>
+            <a href="index.html"><button id="stack-btn">Mainpage</button></a>
             <button id="restart-btn">Restart</button>
+
         </div>
     `
     answer = document.getElementById('answer-input')
@@ -40,9 +55,12 @@ document.getElementById('start-btn').addEventListener('click', () => {
     })
     answer_btn.addEventListener('click', () => {
         const answerText = answer.value
-        if(database[index].translation === answerText)
+        let answers = rightAnswer(answerText, database[index].translation)
+        console.log(answers)
+        if(answers)
             {
-                console.log('you are right!')
+                
+                console.log(`you are right!`)
                 document.getElementById('vocab').style.border = "solid 3px rgb(8, 201, 30)"
                 setTimeout(() => {
                     database.splice(index, 1)
@@ -53,6 +71,26 @@ document.getElementById('start-btn').addEventListener('click', () => {
                     done++
                     document.querySelector('.container').style.borderImage = `linear-gradient(to top, grey 0% ${(database.length/listLen)*100}%, green ${(database.length/listLen)*100}%) 2`
                 }, 2000)
+                const word = database[index].word
+                const translation = database[index].translation
+                let level = database[index].level
+                if(level != 4)
+                    level++
+                
+                const datas = {word, translation, level}
+                const options = {
+                    method: 'POST', 
+                    headers: 
+                    {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datas)
+                }
+                fetch('/right', options)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
             }
         else {
             console.log('you are wrong!')
@@ -62,6 +100,25 @@ document.getElementById('start-btn').addEventListener('click', () => {
                 document.getElementById('vocab').innerHTML = `${getRandomVocab(database, index)}`
                 answer.value = ''
             }, 2000)
+            const word = database[index].word
+                const translation = database[index].translation
+                let level = database[index].level
+                level = 0
+                
+                const datas = {word, translation, level}
+                const options = {
+                    method: 'POST', 
+                    headers: 
+                    {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datas)
+                }
+                fetch('/wrong', options)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
         }
     })
 })
@@ -77,5 +134,4 @@ function getRandomVocab(vocabList, index2){
     }
     return vocabList[index].word
 }
-
 
